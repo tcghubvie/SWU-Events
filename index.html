@@ -103,6 +103,7 @@ let formatted = d.toLocaleDateString("de-AT", {
   day: "2-digit",
   month: "long",
   year: "numeric"
+    });
 
 title.innerText = isToday ? "Heute – " + formatted : formatted;
 });
