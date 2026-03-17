@@ -75,7 +75,12 @@ async function loadEvents() {
     dayDiv.className = "day";
 
     const title = document.createElement("h2");
-    title.innerText = date;
+    const d = new Date(date);
+title.innerText = d.toLocaleDateString("de-AT", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric"
+});
     dayDiv.appendChild(title);
 
     grouped[date].forEach((e, i, arr) => {
