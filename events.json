@@ -1,15 +1,15 @@
 [
   {
-    "date": "2026-03-20",
+    "date": "2026-03-17",
     "time": "18:00",
-    "shop": "Gamers Academy",
-    "event": "Weekly Tournament",
+    "shop": "Card Hive",
+    "event": "Weekly Premier",
     "format": "Constructed"
   },
   {
     "date": "2026-03-20",
-    "time": "18:30",
-    "shop": "Shop B",
+    "time": "19:00",
+    "shop": "Gamers Academy",
     "event": "Weekly Tournament",
     "format": "Constructed"
   }
