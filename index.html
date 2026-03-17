@@ -79,7 +79,8 @@ async function loadEvents() {
 title.innerText = d.toLocaleDateString("de-AT", {
   weekday: "long",
   day: "2-digit",
-  month: "long"
+  month: "long",
+  year: "numeric" 
 });
     dayDiv.appendChild(title);
 
