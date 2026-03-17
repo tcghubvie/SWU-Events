@@ -1,1 +1,16 @@
-
+[
+  {
+    "date": "2026-03-20",
+    "time": "18:00",
+    "shop": "Gamers Academy",
+    "event": "Weekly Tournament",
+    "format": "Constructed"
+  },
+  {
+    "date": "2026-03-20",
+    "time": "18:30",
+    "shop": "Shop B",
+    "event": "Weekly Tournament",
+    "format": "Constructed"
+  }
+]
