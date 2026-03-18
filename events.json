@@ -14,6 +14,20 @@
     "event": "Weekly Tournament",
     "format": "Constructed",
     "link": "https://melee.gg/"
-  }
- 
+  },
+   {
+  "date": "2026-03-19",
+    "time": "19:00",
+    "shop": "Card Club",
+    "event": "Casual",
+    "format": "Twin Suns",
+    "link": "https://melee.gg/"
+},
+   "date": "2026-03-16",
+    "time": "16:00",
+    "shop": "Siren Games",
+    "event": "Weekly Tournament",
+    "format": "Constructed",
+    "link": "https://melee.gg/"
+  },
 ]
