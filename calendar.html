@@ -109,7 +109,7 @@ async function loadCalendar() {
 
     dayEvents.forEach(e => {
       const el = document.createElement("div");
-      el.className = "event";
+      el.className = "event " + (e.type === "special" ? "special" : "");
       el.innerHTML = e.link
   ? `<a href="${e.link}" target="_blank" class="event-link">
        ${e.time} ${e.shop}
