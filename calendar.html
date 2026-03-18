@@ -42,7 +42,6 @@ body {
   padding: 10px;
   min-height: 120px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-
   display: flex;
   flex-direction: column;
 }
@@ -53,12 +52,15 @@ body {
 }
 
 .event {
-   font-size: 11px;
+  font-size: 11px;
   margin-top: 4px;
   padding: 3px 6px;
   border-radius: 4px;
-  
-  .event-link {
+  background: #eee;
+}
+
+/* LINK */
+.event-link {
   text-decoration: none;
   color: inherit;
 }
@@ -66,18 +68,15 @@ body {
 .event-link:hover {
   text-decoration: underline;
 }
-  .special {
+
+/* SPECIAL */
+.event.special {
   background: #ffe5e5;
   border-left: 3px solid #ff3b30;
   font-weight: 600;
 }
-
-  .event.special {
-  background: red !important;
-  color: white !important;
-  border-left: 4px solid black !important;
-}
 </style>
+  
 <div style="margin-bottom: 20px;">
   <button onclick="prevMonth()">⬅️</button>
   <span id="monthLabel"></span>
