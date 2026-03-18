@@ -1,4 +1,21 @@
 [
+   {
+   "date": "2026-03-16",
+    "time": "16:00",
+    "shop": "Siren Games",
+    "event": "Weekly Tournament",
+    "format": "Constructed",
+    "link": "https://melee.gg/"
+  },
+    {
+  "date": "2026-03-17",
+    "time": "19:00",
+    "shop": "SpielRaum",
+    "event": "Weekly Tournament",
+    "format": "Constructed",
+    "link": "https://melee.gg/"
+},
+  
   {
     "date": "2026-03-18",
     "time": "18:00",
@@ -7,15 +24,7 @@
     "format": "Constructed",
     "link": "https://melee.gg/Tournament/View/414039"
   },
-  {
-    "date": "2026-03-20",
-    "time": "19:00",
-    "shop": "Gamers Academy",
-    "event": "Weekly Tournament",
-    "format": "Constructed",
-    "link": "https://melee.gg/"
-  },
-   {
+    {
   "date": "2026-03-19",
     "time": "19:00",
     "shop": "Card Club",
@@ -23,12 +32,13 @@
     "format": "Twin Suns",
     "link": "https://melee.gg/"
 },
-   {
-   "date": "2026-03-16",
-    "time": "16:00",
-    "shop": "Siren Games",
+  {
+    "date": "2026-03-20",
+    "time": "19:00",
+    "shop": "Gamers Academy",
     "event": "Weekly Tournament",
     "format": "Constructed",
     "link": "https://melee.gg/"
   }
+ 
 ]
