@@ -118,7 +118,7 @@ body {
   vertical-align: middle;
 }
   
-  legend-entry {
+.legend-entry {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -126,7 +126,7 @@ body {
   color: #555;
 }
 
-  .legend-box {
+.legend-box {
   width: 24px;
   height: 16px;
   border-radius: 6px;
@@ -237,11 +237,11 @@ if (dateStr === todayStr) {
   "event "
   + (e.type === "special" ? "special " : "")
   + (conflict ? "conflict" : "");
-      el.innerHTML = e.link
+     el.innerHTML = e.link
   ? `<a href="${e.link}" target="_blank" class="event-link">
-       ${e.time} ${e.shop}
+       ${conflict ? "⚠️ " : ""}${e.time} ${e.shop}
      </a>`
-  : ${conflict ? "⚠️ " : ""}${e.time} ${e.shop}
+  : `${conflict ? "⚠️ " : ""}${e.time} ${e.shop}`;
       dayDiv.appendChild(el);
     });
 
