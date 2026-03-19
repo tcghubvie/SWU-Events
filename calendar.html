@@ -150,16 +150,16 @@ const offset = (firstDay + 6) % 7; // Montag = 0
 const today = new Date();
 const todayStr = today.toISOString().split("T")[0];
 
-if (dateStr === todayStr) {
-  dayDiv.classList.add("today");
-}
-
 for (let i = 1; i <= daysInMonth; i++) {
   const dayDiv = document.createElement("div");
   dayDiv.className = "day";
 
   const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
-
+  
+if (dateStr === todayStr) {
+  dayDiv.classList.add("today");
+}
+  
     dayDiv.innerHTML = `<div class="date">${i}</div>`;
 
     const dayEvents = events.filter(e => e.date === dateStr);
