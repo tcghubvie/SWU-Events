@@ -117,6 +117,12 @@ async function loadCalendar() {
     });
 
   const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const firstDay = new Date(year, month, 1).getDay();
+const offset = (firstDay + 6) % 7; // Montag = 0
+  for (let i = 0; i < offset; i++) {
+  const emptyDiv = document.createElement("div");
+  container.appendChild(emptyDiv);
+};
 
   for (let i = 1; i <= daysInMonth; i++) {
     const dayDiv = document.createElement("div");
