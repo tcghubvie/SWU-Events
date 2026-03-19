@@ -5,7 +5,6 @@
         async src="//gc.zgo.at/count.js"></script>
   <meta charset="UTF-8">
   <title>SWU Wien Weekly</title>
-<a href="calendar.html" class="nav-link">📅 Kalender</a> 
    <style id="x8f3kd">
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -15,7 +14,10 @@ body {
   color: #111;
 }
 
-h1 {
+h1 
+  <h1>Star Wars Unlimited – Wien Event Board</h1>
+<a href="calendar.html" class="nav-link">📅 Kalender</a>   
+     {
   margin-bottom: 30px;
 }
 
@@ -41,8 +43,8 @@ h1 {
 }
 
 .event.conflict {
-  background: #ffe5e5;
-  border: 1px solid #ffb3b3;
+  background: #fff3cd;
+  border-left: 4px solid #ff9500;
 }
      .link {
   display: inline-block;
@@ -77,6 +79,10 @@ h1 {
 <div id="events"></div>
 
 <script>
+  function toMinutes(t) {
+  const [h, m] = t.split(":").map(Number);
+  return h * 60 + m;
+}
 async function loadEvents() {
   const res = await fetch("events.json?="+ new Date().getTime());
   const events = await res.json();
@@ -116,16 +122,23 @@ title.innerText = isToday ? "Heute – " + formatted : formatted;
     dayDiv.appendChild(title);
 
     grouped[date].forEach((e, i, arr) => {
-      let conflict = arr.some(other =>
-        other !== e &&
-        Math.abs(parseInt(other.time) - parseInt(e.time)) <= 1
-      );
+      let conflict = arr.some(other => {
+  if (other === e) return false;
+
+  const t1 = toMinutes(e.time);
+  const t2 = toMinutes(other.time);
+
+  const closeInTime = Math.abs(t1 - t2) < 120;
+  const isSpecial = e.type === "special" || other.type === "special";
+
+  return closeInTime && isSpecial;
+});
 
       const div = document.createElement("div");
       div.className = "event " + (conflict ? "conflict" : "normal");
       div.innerHTML = `
   <div>
-    <div class="time">${e.time}</div>
+    <div class="time">${conflict ? "⚠️ " : ""}${e.time}</div>
     <div class="shop">${e.shop}</div>
     <div class="meta">${e.event || ""} ${e.format ? "• " + e.format : ""}</div>
     ${e.link ? `<a href="${e.link}" target="_blank" class="link">Zur Anmeldung →</a>` : ""}
