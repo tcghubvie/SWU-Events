@@ -102,6 +102,29 @@ body {
   border: 2px solid #007aff;
   background: #e6f0ff;
 }
+  .legend {
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #555;
+}
+
+.legend-item {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+.legend-item.normal {
+  background: #eee;
+}
+
+.legend-item.special {
+  background: #ffe5e5;
+  border-left: 3px solid #ff3b30;
+}
 </style>
   
 <div style="margin-bottom: 20px;">
@@ -109,6 +132,12 @@ body {
   <span id="monthLabel"></span>
   <button onclick="nextMonth()">➡️</button>
 </div>
+  
+  <div class="legend">
+  <span class="legend-item normal"></span> Weekly  
+  <span class="legend-item special"></span> Special Event  
+</div>
+  
 <div class="weekdays">
   <div>Mo</div>
   <div>Di</div>
