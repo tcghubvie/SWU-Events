@@ -140,6 +140,10 @@ body {
   background: #ffe5e5;
   border-left: 3px solid #ff3b30;
 }
+  .event.conflict {
+  background: #fff3cd;
+  border-left: 3px solid #ff9500;
+}
 </style>
   
 <div style="margin-bottom: 20px;">
@@ -172,6 +176,10 @@ body {
 <div class="calendar" id="calendar"></div>
 
 <script>
+  function toMinutes(t) {
+  const [h, m] = t.split(":").map(Number);
+  return h * 60 + m;
+}
 let currentDate = new Date();
 
 async function loadCalendar() {
@@ -217,12 +225,23 @@ if (dateStr === todayStr) {
 
     dayEvents.forEach(e => {
       const el = document.createElement("div");
-      el.className = "event " + (e.type === "special" ? "special" : "");
+      let conflict = dayEvents.some(other => {
+  if (other === e) return false;
+
+  const t1 = toMinutes(e.time);
+  const t2 = toMinutes(other.time);
+
+  return Math.abs(t1 - t2) < 120; // 2h Schwelle
+});
+      el.className =
+  "event "
+  + (e.type === "special" ? "special " : "")
+  + (conflict ? "conflict" : "");
       el.innerHTML = e.link
   ? `<a href="${e.link}" target="_blank" class="event-link">
        ${e.time} ${e.shop}
      </a>`
-  : `${e.time} ${e.shop}`;
+  : ${conflict ? "⚠️ " : ""}${e.time} ${e.shop}
       dayDiv.appendChild(el);
     });
 
