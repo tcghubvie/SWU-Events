@@ -85,9 +85,40 @@ h1
   return h * 60 + m;
 }
 async function loadEvents() {
-  const res = await fetch("events.json?="+ new Date().getTime());
+  const res = await fetch("events.json?=" + new Date().getTime());
   const events = await res.json();
-  const today = new Date().toISOString().split("T")[0];
+
+  const today = new Date();
+  const todayStr = today.toISOString().split("T")[0];
+
+  let generatedEvents = [];
+
+  events.forEach(e => {
+    if (e.recurring) {
+      for (let i = 0; i < 14; i++) {
+        const d = new Date();
+        d.setDate(today.getDate() + i);
+
+        if (d.getDay() === e.weekday) {
+          const dateStr = d.toISOString().split("T")[0];
+
+          generatedEvents.push({
+            ...e,
+            date: dateStr
+          });
+        }
+      }
+    }
+  });
+
+  const allEvents = [
+    ...events.filter(e => !e.recurring),
+    ...generatedEvents
+  ];
+
+  const filteredEvents = allEvents
+    .filter(e => e.date >= todayStr)
+    .sort((a, b) => a.date.localeCompare(b.date));
 const filteredEvents = events
   .filter(e => e.date >= today)
   .sort((a, b) => a.date.localeCompare(b.date));
@@ -104,7 +135,6 @@ filteredEvents.forEach(e => {
 
     const title = document.createElement("h2");
     const d = new Date(date);
-    const today = new Date();
 
 const isToday =
   d.getDate() === today.getDate() &&
