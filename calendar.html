@@ -239,9 +239,9 @@ if (dateStr === todayStr) {
   + (conflict ? "conflict" : "");
      el.innerHTML = e.link
   ? `<a href="${e.link}" target="_blank" class="event-link">
-       ${conflict ? "⚠️ " : ""}${e.time} ${e.shop}
+     ${conflict ? "⚠️ " : ""}${e.time} ${e.shop}${e.event ? " • " + e.event : ""}
      </a>`
-  : `${conflict ? "⚠️ " : ""}${e.time} ${e.shop}`;
+  : ${conflict ? "⚠️ " : ""}${e.time} ${e.shop}${e.event ? " • " + e.event : ""}
       dayDiv.appendChild(el);
     });
 
