@@ -233,18 +233,19 @@ if (dateStr === todayStr) {
 
   return Math.abs(t1 - t2) < 120; // 2h Schwelle
 });
-      el.className =
+     el.className =
   "event "
   + (e.type === "special" ? "special " : "")
   + (conflict ? "conflict" : "");
-     el.innerHTML = e.link
-  ? `<a href="${e.link}" target="_blank" class="event-link">
-     ${conflict ? "⚠️ " : ""}${e.time} ${e.shop}${e.event ? " • " + e.event : ""}
-     </a>`
-  : ${conflict ? "⚠️ " : ""}${e.time} ${e.shop}${e.event ? " • " + e.event : ""}
-      dayDiv.appendChild(el);
-    });
 
+el.innerHTML = e.link
+  ? `<a href="${e.link}" target="_blank" class="event-link">
+       ${conflict ? "⚠️ " : ""}${e.time} ${e.shop}${e.event ? " • " + e.event : ""}
+     </a>`
+  : `${conflict ? "⚠️ " : ""}${e.time} ${e.shop}${e.event ? " • " + e.event : ""}`;
+
+dayDiv.appendChild(el);
+      });
     container.appendChild(dayDiv);
   }
 }
