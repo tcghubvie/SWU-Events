@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
- <head>
   <meta charset="UTF-8">
   <title>SWU Wien Weekly</title>
 
@@ -9,77 +8,59 @@
         async src="//gc.zgo.at/count.js"></script>
 
   <style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #f5f6f8;
-    margin: 0;
-    padding: 20px;
-    color: #111;
-  }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f6f8;
+      margin: 0;
+      padding: 20px;
+      color: #111;
+    }
 
-  h1 {
-    margin-bottom: 30px;
-  }
-  ...
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .day {
+      margin-bottom: 30px;
+    }
+
+    .day h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .event {
+      padding: 12px 16px;
+      margin: 6px 0;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .event.conflict {
+      background: #fff3cd;
+      border-left: 4px solid #ff9500;
+    }
+
+    .link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: #007aff;
+      text-decoration: none;
+    }
+
+    .time {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .shop {
+      font-size: 16px;
+      font-weight: 600;
+    }
   </style>
-</head>
-
-h1 
-        <h1>Star Wars Unlimited – Wien Event Board</h1>
-     {
-  margin-bottom: 30px;
-}
-
-.day {
-  margin-bottom: 30px;
-}
-
-.day h2 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #555;
-}
-
-.event {
-  padding: 12px 16px;
-  margin: 6px 0;
-  border-radius: 10px;
-  background: white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.event.conflict {
-  background: #fff3cd;
-  border-left: 4px solid #ff9500;
-}
-     .link {
-  display: inline-block;
-  margin-top: 6px;
-  font-size: 13px;
-  color: #007aff;
-  text-decoration: none;
-}
-
-.link:hover {
-  text-decoration: underline;
-}
-.event a:hover {
-  opacity: 0.8;
-}
-.time {
-  font-weight: 500;
-  font-size: 14px; 
-}
-
-.shop {
-  color: #333;
-  font-size: 16px;
-  font-weight: 600;
-}
-</style>
 </head>
 <body>
 
@@ -124,11 +105,9 @@ async function loadEvents() {
     ...generatedEvents
   ];
 
-  const filteredEvents = allEvents
-    .filter(e => e.date >= todayStr)
-    .sort((a, b) => a.date.localeCompare(b.date));
-const filteredEvents = events
-  .filter(e => e.date >= today)
+
+const filteredEvents = allEvents
+  .filter(e => e.date >= todayStr)
   .sort((a, b) => a.date.localeCompare(b.date));
 
   const grouped = {};
@@ -137,59 +116,66 @@ filteredEvents.forEach(e => {
     grouped[e.date].push(e);
   });
 
-  for (let date in grouped) {
+ Object.keys(grouped)
+  .sort()
+  .forEach(date => {
+
     const dayDiv = document.createElement("div");
     dayDiv.className = "day";
 
     const title = document.createElement("h2");
     const d = new Date(date);
 
-const isToday =
-  d.getDate() === today.getDate() &&
-  d.getMonth() === today.getMonth() &&
-  d.getFullYear() === today.getFullYear();
-    
-let formatted = d.toLocaleDateString("de-AT", {
-  weekday: "long",
-  day: "2-digit",
-  month: "long",
-  year: "numeric"
+    const isToday =
+      d.getDate() === today.getDate() &&
+      d.getMonth() === today.getMonth() &&
+      d.getFullYear() === today.getFullYear();
+
+    let formatted = d.toLocaleDateString("de-AT", {
+      weekday: "long",
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
     });
 
-title.innerText = isToday ? "Heute – " + formatted : formatted;
+    title.innerText = isToday ? "Heute – " + formatted : formatted;
 
     dayDiv.appendChild(title);
 
     grouped[date].forEach((e, i, arr) => {
       let conflict = arr.some(other => {
-  if (other === e) return false;
+        if (other === e) return false;
 
-  const t1 = toMinutes(e.time);
-  const t2 = toMinutes(other.time);
+        const t1 = toMinutes(e.time);
+        const t2 = toMinutes(other.time);
 
-  const closeInTime = Math.abs(t1 - t2) < 120;
-  const isSpecial = e.type === "special" || other.type === "special";
+        const closeInTime = Math.abs(t1 - t2) < 120;
+        const isSpecial = e.type === "special" || other.type === "special";
 
-  return closeInTime && isSpecial;
-});
+        return closeInTime && isSpecial;
+      });
 
       const div = document.createElement("div");
-      div.className = "event " + (conflict ? "conflict" : "normal");
+      div.className = "event " + (conflict ? "conflict" : "");
+
       div.innerHTML = `
-  <div>
-    <div class="time">${conflict ? "⚠️ " : ""}${e.time}</div>
-    <div class="shop">${e.shop}</div>
-    <div class="meta">${e.event || ""} ${e.format ? "• " + e.format : ""}</div>
-    ${e.link ? `<a href="${e.link}" target="_blank" class="link">Zur Anmeldung →</a>` : ""}
-  </div>
-`;
+        <div>
+          <div class="time">${conflict ? "⚠️ " : ""}${e.time}</div>
+          <div class="shop">${e.shop}</div>
+          <div class="meta">${e.event || ""} ${e.format ? "• " + e.format : ""}</div>
+          ${e.link ? `<a href="${e.link}" target="_blank" class="link">Zur Anmeldung →</a>` : ""}
+        </div>
+      `;
+
       dayDiv.appendChild(div);
     });
 
     document.getElementById("events").appendChild(dayDiv);
-  }
-}
 
+});
+ 
+ }
+ 
 loadEvents();
 </script>
 
