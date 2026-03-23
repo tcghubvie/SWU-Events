@@ -29,7 +29,7 @@
     "format": "Constructed",
     "type": "weekly",
     "link": "https://melee.gg/Tournament/View/414039",
-    "reccuring": true
+    "recurring": true
   },
     {
     "weekday": 4,
@@ -39,7 +39,7 @@
     "format": "Twin Suns",
     "type": "weekly",
     "link": "https://melee.gg/Hub/Organization/14765",
-    "reccuring": true 
+    "recurring": true 
        
 },
   {
@@ -50,7 +50,7 @@
     "format": "Constructed",
     "type": "weekly",
     "link": "https://melee.gg/Hub/Organization/4460",
-     "reccuring": true
+     "recurring": true
   },
  
      {
