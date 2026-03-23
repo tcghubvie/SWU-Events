@@ -82,6 +82,7 @@
     "type": "special",
     "link": "https://melee.gg/Hub/Organization/4460"
   },
+   
  {
      "date": "2026-04-18",
     "time": "12:00",
@@ -112,6 +113,16 @@
     "link": "https://melee.gg/Tournament/View/403823"
   },
 
+   {
+    "date": "2026-05-02",
+    "time": "11:00",
+    "shop": "Trading Cards United",
+    "event": "Planetary Qualifier",
+    "format": "Constructed",
+    "type": "special",
+    "link": "https://melee.gg/Tournament/View/408186"
+  },
+
     {
      "date": "2026-05-22",
     "time": "09:00",
@@ -119,6 +130,6 @@
     "event": "Regional Qualifier",
     "format": "Constructed",
     "type": "special",
-    "link": "https://melee.gg/Tournament/View/408186"
+    "link": "https://melee.gg"
   }
 ]
