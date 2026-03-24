@@ -20,10 +20,28 @@ h1 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+  .pill-nav {
+    max-width: 100%;
+    padding: 10px;
   }
+
+  .pill-nav button {
+    font-size: 20px;
+    padding: 10px 14px;
+  }
+
+  .pill-nav span {
+    font-size: 16px;
+  }
+  }
+  
   .calendar {
-    gap: 6px;
-  }
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 90px; /* 👈 HIER rein */
+  gap: 6px;
+}
 
   .day {
     padding: 6px;
@@ -46,23 +64,7 @@ h1 {
   .event-sub {
     font-size: 9px;
   }
-}
-    @media (max-width: 600px) {
-
-  .pill-nav {
-    max-width: 100%;
-    padding: 10px;
-  }
-
-  .pill-nav button {
-    font-size: 20px;
-    padding: 10px 14px;
-  }
-
-  .pill-nav span {
-    font-size: 16px;
-  }
-}
+  
 .nav {
   display: flex;
   align-items: center;
