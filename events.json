@@ -122,6 +122,16 @@
     "type": "special",
     "link": "https://melee.gg/Tournament/View/408186"
   },
+   
+    {
+     "date": "2026-05-16",
+    "time": "12:00",
+    "shop": "SpielRaum",
+    "event": "Store Showdown - Twin Suns",
+    "format": "Twin Suns",
+    "type": "special",
+    "link": "https://melee.gg/Tournament/View/420359"
+  },
 
     {
      "date": "2026-05-22",
@@ -131,5 +141,16 @@
     "format": "Constructed",
     "type": "special",
     "link": "https://melee.gg"
+  },
+   
+   {
+     "date": "2026-06-13",
+    "time": "12:00",
+    "shop": "SpielRaum",
+    "event": "Store Showdown",
+    "format": "Constructed",
+    "type": "special",
+    "link": "https://melee.gg/Tournament/View/422410"
   }
+   
 ]
